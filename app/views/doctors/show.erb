@@ -1,0 +1,9 @@
+<%# doctors
+  #show page
+    shows all of a doctor's appointment times in a human readable format (FAILED - 1)
+    links to the patient's show page by name for each appointment (FAILED - 2) %>
+
+    <p><%= @doctor.name  %>'s Appointments:</p><br>
+<% @doctor.appointments.each do |app| %>
+<%= app.formatted_date %> <%= link_to app.patient.name, patient_path(app.patient.id) %><br>
+<% end %>
