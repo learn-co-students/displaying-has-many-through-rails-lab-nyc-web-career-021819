@@ -1,0 +1,29 @@
+<h2><%= @patient.name %> </h2>
+
+<h4><%= button_to 'Edit', edit_patient_path(@patient), {method: :get} %> <%= button_to 'Delete', @patient, method: :delete, data: { confirm: 'Confirm delete?' } %> </h4>
+
+<h4>Age:</h4>
+<p><%= @patient.age %></p>
+
+<h4>Appointments:</h4>
+<% if @patient.appointments.length > 0  %>
+ <table style="width:50%">
+<tr>
+  <th>Doctor Name</th>
+  <th>Department</th>
+  <th>Appointment</th>
+</tr>
+ <% @patient.doctors.each do |doctor| %>
+ <tbody>
+ <tr>
+ <td><%= link_to doctor.name, doctor_path(doctor) %></td>
+ <td><%= doctor.department %></td>
+ <% doctor.appointments.each do |app| %>
+ <td><%= "#{app.appointment_datetime.strftime("%B %d, %Y")} at #{app.appointment_datetime.strftime("%H:%M")}" %></td>
+      <% end %>
+    <% end %>
+  <% end %>
+    </tr>
+  </tbody>
+ </table>
+ <p><%= link_to "Back to patients", patients_path %></p>
