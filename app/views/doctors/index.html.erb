@@ -1,0 +1,8 @@
+<h1>Doctors</h1>
+
+<% @doctors.each do |d|%>
+<h2><%= link_to d.name, d%></h2>
+
+<h3> There are <%= pluralize(d.patients.count, "patient")%> waiting. </h3>
+
+<%end%>
