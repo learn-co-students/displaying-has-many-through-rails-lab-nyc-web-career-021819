@@ -1,0 +1,8 @@
+<h1><%= @patient.name %></h1>
+
+<h2>Appointment List</h2>
+<ol>
+<% @patient.appointments.each do |ap|%>
+<p><li>Doctor :<%= link_to ap.doctor.name, "/doctors/#{ap.doctor.id}"%>, Scheduled <%= ap.datetime%></li></p>
+<%end%>
+</ol>
